@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Overcast", "Overcast\Overcast.csproj", "{61A9FD97-F808-4DD5-9941-98E185B60A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "occ", "occ\occ.csproj", "{82F9E47D-D2C2-428C-9150-0AA6B152FC77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61A9FD97-F808-4DD5-9941-98E185B60A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A9FD97-F808-4DD5-9941-98E185B60A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A9FD97-F808-4DD5-9941-98E185B60A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A9FD97-F808-4DD5-9941-98E185B60A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F9E47D-D2C2-428C-9150-0AA6B152FC77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F9E47D-D2C2-428C-9150-0AA6B152FC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F9E47D-D2C2-428C-9150-0AA6B152FC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F9E47D-D2C2-428C-9150-0AA6B152FC77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53F4BCF8-43AC-4781-B729-8AF611068229}
+	EndGlobalSection
+EndGlobal
