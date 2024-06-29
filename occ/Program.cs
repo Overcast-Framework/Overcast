@@ -34,10 +34,10 @@ namespace occ
                 Console.WriteLine("Binder finished in " + (DateTimeOffset.Now - startb).TotalMilliseconds + " ms.");
 
                 DateTimeOffset startl = DateTimeOffset.Now;
-                var llvmEmitter = new LLVMEmitter();
-                llvmEmitter.Initialize_NatAsm("test01");
+                var llvmEmitter = new IREmitter();
+                llvmEmitter.InitializeNatAsm();
 
-                var llvmModule = llvmEmitter.EmitModule(prsrData);
+                var llvmModule = llvmEmitter.GenerateIR(prsrData, "test01");
                 Console.WriteLine("LLVM IR Generation finished in " + (DateTimeOffset.Now - startl).TotalMilliseconds + " ms.");
                 sbyte* errorCode = null;
 
@@ -48,8 +48,6 @@ namespace occ
                 }
 
                 Console.WriteLine("Total elapsed time " + (DateTimeOffset.Now - start).TotalMilliseconds + " ms.");
-
-                llvmEmitter.Dispose();
             }
             catch (ParserException e)
             {
