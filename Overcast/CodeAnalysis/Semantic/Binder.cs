@@ -231,7 +231,7 @@ namespace Overcast.CodeAnalysis.Semantic
         {
             if(Structs.ContainsKey(expr.StructName))
             {
-                return new Overcast.CodeAnalysis.Parsing.PointerType(new IdentifierType(expr.StructName));
+                return new IdentifierType(expr.StructName);
             }
             throw new BinderException($"No such struct {expr.StructName} exists.");
         }

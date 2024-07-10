@@ -28,6 +28,7 @@ namespace Overcast.CodeAnalysis.LLVMC
 
         // Dictionaries and Data Tables
         private Dictionary<string, StructData> StructTable = new Dictionary<string, StructData>();
+        private Dictionary<Pointer<LLVMOpaqueType>, StructData> StructTypeData = new Dictionary<Pointer<LLVMOpaqueType>, StructData>();
         private Dictionary<string, VariableData> VariableTable = new Dictionary<string, VariableData>();
         private Dictionary<string, FunctionData> FunctionTable = new Dictionary<string, FunctionData>();
         private Dictionary<string, Pointer<LLVMOpaqueValue>> VarStructAllocaTable = new Dictionary<string, Pointer<LLVMOpaqueValue>>();
@@ -188,6 +189,7 @@ namespace Overcast.CodeAnalysis.LLVMC
             {
                 var cStructType = LLVM.StructType(pStrTypes, (uint)structTypes.Length, 0);
                 StructTable.Add(stmt.Name, new StructData(stmt.Name, stmt.Members, cStructType));
+                StructTypeData.Add(cStructType, new StructData(stmt.Name, stmt.Members, cStructType));
                 LLVM.AddGlobal(_Module, cStructType, StrToSByte(stmt.Name));
             }
 
@@ -433,7 +435,7 @@ namespace Overcast.CodeAnalysis.LLVMC
             if (expr.ObjectName is VariableExpr) // this means that evalExpr = LLVM.BuildLoad(.., struct alloca value, ...)
             {
                 var strType = LLVM.TypeOf(evalExpr);
-                var strDecl = StructTable.Single(e => e.Value.StructLLVMType == strType).Value;
+                var strDecl = StructTypeData[strType];
 
                 var varName = ((VariableExpr)expr.ObjectName).Name;
                 ValueStack.Push(LLVM.BuildLoad2(_Builder, GetLLVMType(strDecl.Properties[strDecl.Indices[expr.MemberName]].Type), GetStructMemberGEP(expr, strType, strDecl), StrToSByte("struct_member")));
